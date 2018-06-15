@@ -1,0 +1,41 @@
+﻿<Window x:Class="TheatreSystem08220.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheatreSystem08220"
+        mc:Ignorable="d"
+        Title="Theatre Login" Name="myMainWindow" Height="766" Width="1366"
+        WindowState="Maximized"
+        WindowStyle="SingleBorderWindow">
+    <Grid Margin="1,1,3,-20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <WrapPanel HorizontalAlignment="Center"  VerticalAlignment="Center"  Grid.Row="1"  >
+            <WrapPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="50,50" />
+                    <Setter Property="Padding" Value="50,50" />
+                </Style>
+            </WrapPanel.Resources>
+            <Button x:Name="playScheduleButton" Content="Play Schedule" HorizontalAlignment="Left" VerticalAlignment="Top" Click="playScheduleButton_Click"/>
+            <Button x:Name="bookingButton" Content="Booking/Reservations" HorizontalAlignment="Left" VerticalAlignment="Top" Click="bookingButton_Click"/>
+            <Button x:Name="newsletterButton" Content="Newsletter" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button x:Name="reportsButton" Content="Reports" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </WrapPanel>
+        <Label x:Name="label" Content="Test Menu for accessing other windows" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" FontSize="28" FontFamily="Segoe UI Black"/>
+        <ComboBox x:Name="comboBox" IsEditable="True" IsReadOnly="True" Text="Access level:" HorizontalAlignment="Left" Margin="109,99,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120">
+            <RadioButton Content="Admin" Name="adminButton"/>
+            <RadioButton Content="Manager" Name="managerButton"/>
+            <RadioButton Content="Booking officer" Name="bookingOfficerButton"/>
+            <RadioButton Content="Newsletter editor" Name="newsLetterEditorButton"/>
+            <RadioButton Content="customer representative" Name="customerRepButton"/>
+        </ComboBox>
+    </Grid>
+</Window>

@@ -1,0 +1,273 @@
+﻿<Window x:Class="TheatreSystem08220.Windows.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheatreSystem08220.Windows"
+        mc:Ignorable="d"
+        Title="Main" Height="766" Width="1366" Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ToolBar>
+            <DockPanel Grid.Column="0">
+                <ToolBarTray DockPanel.Dock="Top">
+                    <ToolBar>
+                        <Menu>
+                            <MenuItem Header="File" Click="MenuItem_Click">
+                                <MenuItem Header="New.." >
+                                    <MenuItem x:Name="fileNewReports" Header="Report" />
+                                    <MenuItem x:Name="fileNewPerformance" Header="Performance Entry"/>
+                                    <MenuItem x:Name="fileNewBooking" Header="Booking"/>
+                                    <MenuItem x:Name="fileNewNewsletter" Header="Newsletter"/>
+                                </MenuItem>
+                                <MenuItem Header="Save"/>
+                            </MenuItem>
+                        </Menu>
+                    </ToolBar>
+                </ToolBarTray>
+            </DockPanel>
+        </ToolBar>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" Margin="0,23,0,0" VerticalAlignment="Stretch" Grid.RowSpan="2">
+            <TabItem x:Name="homeTab" Header="Home">
+                <Grid>
+                    <Grid Margin="1,1,3,-20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <WrapPanel HorizontalAlignment="Center"  VerticalAlignment="Center"  Grid.Row="2"  >
+                            <WrapPanel.Resources>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Margin" Value="50,50" />
+                                    <Setter Property="Padding" Value="50,50" />
+                                </Style>
+                            </WrapPanel.Resources>
+                            <Button x:Name="playScheduleButton" FontSize="16" Content="Play Schedule" HorizontalAlignment="Left" VerticalAlignment="Top" Click="playScheduleButton_Click"/>
+                            <Button x:Name="bookingButton" FontSize="16" Content="Booking/Reservations" HorizontalAlignment="Left" VerticalAlignment="Top" Click="bookingButton_Click"/>
+                            <Button x:Name="newsletterButton" FontSize="16" Content="Newsletter" HorizontalAlignment="Left" VerticalAlignment="Top" Click="newsletterButton_Click"/>
+                            <Button x:Name="reportsButton" FontSize="16" Content="Reports" HorizontalAlignment="Left" VerticalAlignment="Top" Click="reportsButton_Click"/>
+                        </WrapPanel>
+                        <Label x:Name="label" Content="Theatre Main Menu" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" FontSize="28"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="scheduleTab" Header="Schedule" Margin="2,0,-6,-2">
+                <Grid>
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width=".3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width=".3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width=".3*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Upcoming Performances:" Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                    <ListBox x:Name="schUpcomingListBox" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" Margin="0,0,0,10"/>
+                    <Label Content="Search Performance" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                    <DatePicker x:Name="schSearchDatePicker" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,10,0" CalendarClosed="schSearchDatePicker_CalendarClosed"/>
+                    <Label Grid.Column="3" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Width="150" Content="Search By ID:" Margin="0,30,10,0"/>
+                    <TextBox x:Name="schIdInputTXT" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Margin="0,0,10,0" PreviewTextInput="CheckNumericOnly"/>
+                    <Button x:Name="schIdSearchButton" Content="Search" Grid.Column="3" Grid.Row="1" Width="140" Height="40" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Click="schIdSearchButton_Click"/>
+                    <ListBox x:Name="schSearchPerformanceResultListBox" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" Margin="0,10,0,10">
+
+                    </ListBox>
+                    <Button x:Name="schExitButton" Content="Exit" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Width="80" Height="40" Click="schExitButton_Click"/>
+                    <Button x:Name="schAddPerfButton" Content="Add Performance" Grid.Column="2" Grid.Row="3" Height="40" Margin="10,10,10,10" Click="schAddPerfButton_Click"/>
+                    <Button x:Name="schEditPerfButton" Content="Edit Performance" Grid.Column="2" Grid.Row="2" Height="40" Margin="10,10,10,10" Click="schEditPerfButton_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="bookingTab" Header="Booking">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".5*"/>
+                        <RowDefinition Height=".3*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height=".5*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="bookingUpperCircleButton"  FontSize="16" Content="Upper Circle" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="140" Height="40" Click="upperCircleButton_Click" Background="#FFE6E4E4"/>
+                    <Button x:Name="bookingDressCircleButton" FontSize="16" Content="Dress Circle" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="140" Height="40" Click="dressCircleButton_Click"/>
+                    <Button x:Name="bookingStallsButton" FontSize="16" Content="Stalls" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="140" Height="40" Click="stallsButton_Click"/>
+                    <Label x:Name="areaTitle" FontWeight="Bold" Content="Seating Area" FontSize="28" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Label x:Name="remainingTitle" FontWeight="Bold" Content="Remaining seats" FontSize="28 " Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <TextBlock x:Name="bookingUpperCountTXT" Text="X/110" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" FontSize="16" />
+                    <TextBlock x:Name="bookingDressCountTXT" Text="X/137" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="3" FontSize="16" />
+                    <TextBlock x:Name="bookingStallsCountTXT" Text="X/239" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="4" FontSize="16" />
+                    <Label x:Name="perfLabelBooking" FontWeight="Bold" Content="Performance" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28"/>
+                    <Label x:Name="upcomingLabelBooking" Content="upcoming:" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" FontSize="24"/>
+                    <ListBox x:Name="bookingUpcomingListBox" Grid.Column="0" Grid.Row="2" Grid.RowSpan="3" Margin="10,0,0,10" SelectionChanged="bookingUpcomingListBox_SelectionChanged">
+
+                    </ListBox>
+                    <Label Content="Search by ID:" Grid.Column="0" Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                    <TextBox x:Name="bookingIdInputTXT" Grid.Column="0" Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" Width="140" Margin="0,15,10,0"/>
+                    <DatePicker x:Name="bookingDateSearch" Grid.Column="0" Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" SelectedDateChanged="bookingDateSearch_SelectedDateChanged"/>
+                    <Button x:Name="bookingIdSearchButton" Grid.Column="0" Grid.Row="5" VerticalAlignment="Bottom" Height="30" Content="Search" HorizontalAlignment="Right" Width="140" Margin="10,10,10,10" Click="bookingIdSearchButton_Click"/>
+                    <Button x:Name="bookingBackButton" Content="Back" Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right" Width="140" Height="40" Margin="10,10,10,10" Click="bookingBackButton_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="confirmBookingTab" Header="ConfirmBooking">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width=".2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width=".2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width=".2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height=".5*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="0" Content="Customer Details" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" FontSize="24"/>
+                    <Label Content="First Name:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="confirmFirstNameTXT" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Width="150"/>
+                    <Label Content="Last Name:" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="confirmLastNameTXT" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Width="150"/>
+                    <Label Content="ID:" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
+                    <TextBox x:Name="confirmIDsearchBox" Grid.Column="1" Grid.Row="1" Width="100" Height="20" HorizontalAlignment="Right" Margin="0,0,50,0"/>
+                    <Button x:Name="confirmSearchAccountsButton"  Grid.Column="1" FontSize="16" Grid.Row="6" Content="Search Accounts" Width="160" VerticalAlignment="Center" HorizontalAlignment="Left" Height="40" Click="confirmSearchAccountsButton_Click"/>
+                    <Label Content="Address:" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="confirmAddressIn1" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250"/>
+                    <TextBox x:Name="confirmAddressIn2" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250"/>
+                    <Label Content="Postcode:" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="confirmPostcodeIn" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Width="100"/>
+                    <Label Content="Reservation Details" FontWeight="Bold" Grid.Column="1" Grid.ColumnSpan="5"  Grid.Row="8" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+                    <TextBlock Text="Performance Title:" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="9" TextWrapping="Wrap" />
+                    <Label Content="Price:" Grid.Column="0" Grid.Row="10" VerticalAlignment="Center"/>
+                    <TextBox x:Name="confirmPriceText" Text="Price here" Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" Width="100" HorizontalAlignment="Left" IsHitTestVisible="False" />
+                    <TextBox x:Name="confirmPerfTitleDisplay" Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" Text="Title info goes here" IsHitTestVisible="False"/>
+                    <TextBlock Text="Seat Number/s:" TextWrapping="Wrap" Grid.Column="2" Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="confirmSeatNumbersDisplay" Text="Example: (Stalls)A1,A2" IsHitTestVisible="False" Grid.Column="3" Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250" />
+                    <Label Content="Date:" Grid.Column="4" Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="confirmPerfDateDisplay" Text="xx/xx/xxxx" Grid.Column="5" Grid.Row="9" IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" />
+                    <Button x:Name="confirmReservationButton" Content="Confirm Reservation" FontSize="16" Grid.Column="5" Grid.Row="10" Width="150" HorizontalAlignment="Right" Height="40" VerticalAlignment="Center" Click="confirmReservationButton_Click"/>
+                    <TextBlock Text="Payment Method:" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="1"/>
+                    <ComboBox x:Name="confirmPaymentMethodCombo" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250">
+                        <MenuItem Header="Cash"/>
+                        <MenuItem Header="Card"/>
+                        <MenuItem Header="Other"/>
+                        <MenuItem Header="Reservation (Not paid)"/>
+                    </ComboBox>
+                    <Button x:Name="confirmApplyBillingAddressButton" Grid.Column="3" Grid.Row="2" FontSize="16" Content="Apply Same Address" Width="250" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left" Click="confirmApplyBillingAddressButton_Click"/>
+                    <TextBlock Text="Billing Address:" TextWrapping="Wrap" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="billingAddressIn1" Grid.Column="3" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250"/>
+                    <TextBox x:Name="billingAddressIn2" Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Width="250"/>
+                    <Label Content="Postcode:" Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="billingPostcodeIn" VerticalAlignment="Center" Grid.Column="3" Grid.Row="5" HorizontalAlignment="Left" Width="100"/>
+                    <TextBlock Text="Gold Member:" TextWrapping="Wrap" Grid.Column="4" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <CheckBox x:Name="confirmGoldMemberCheckBox" IsHitTestVisible="False" Focusable="False" IsChecked="False" Grid.Column="5" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBlock Text="Join Date:" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="4" Grid.Row="2" />
+                    <TextBox x:Name="confirmGoldJoinDateTXT" Text="xx/xx/xxxx" Grid.Column="5" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" Focusable="False"/>
+                    <TextBlock Text="Add New Membership" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="4" Grid.Row="3" />
+                    <CheckBox x:Name="confirmAddNewGoldCheckBox" Grid.Column="5" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Click="confirmAddNewGoldCheckBox_Click"/>
+                    <Button x:Name="confirmBookExitButton" Grid.Column="5" HorizontalAlignment="Left" Grid.Row="10" Width="150" Height="40" Content="Cancel" FontSize="16" Click="confirmBookExitButton_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="reportTab" Header="Reports">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.75*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Reports and Statistics" FontSize="24" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="0" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <Label Content="Upcoming Performances:" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="24"/>
+                    <ListBox x:Name="reportsUpcomingListbox" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" Margin="0,0,0,10"/>
+
+
+                    <DatePicker x:Name="reportsDateSearch" Grid.Column="3" Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Label Content="search by ID:" FontSize="16" Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="reportsIdSearch" Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Width="140" Margin="20,0,10,0"/>
+                    <Button x:Name="reportsSearchButton" Content="Search" Grid.Column="3" Grid.Row="4" Width="140" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="20,10,10,10" Click="reportsSearchButton_Click"/>
+                    <ListBox x:Name="reportsListBox" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3" Margin="20,20,20,20"/>
+                    <Button x:Name="reportsUpdateSearchButton" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="4" Content="Update" Width="140" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,30,30,30" Click="reportsUpdateSearchButton_Click"/>
+                    <Button x:Name="reportsBackButton" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="4" Content="Exit" Width="140" Height="40" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="30,30,30,30" Click="reportsBackButton_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="newsletterTab" Header="Newsletter">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".2*"/>
+                        <RowDefinition Height=".05*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height=".2*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Newsletter" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" />
+                    <Label Content="List of Goldmembers" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="20,10,20,10"/>
+                    <ToolBar Grid.Column="1" Grid.Row="1">
+                        <MenuItem x:Name="openNewsletter" Header="Open" Click="openNewsletter_Click"/>
+                        <MenuItem Header="Copy"/>
+                        <MenuItem Header="Cut"/>
+                        <MenuItem Header="Paste"/>
+                        <TextBlock Text="Font size"/>
+                        <ComboBox>
+                            <ComboBoxItem Content="8"/>
+                            <ComboBoxItem Content="10"/>
+                            <ComboBoxItem Content="12" IsSelected="True"/>
+                            <ComboBoxItem Content="14"/>
+                        </ComboBox>
+                        <MenuItem x:Name="saveNewsletter" Header="Save" Margin="40,0,0,0" Click="saveNewsletter_Click"/>
+                    </ToolBar>
+                    <ScrollViewer Grid.Column="1" Grid.Row="2">
+                        <RichTextBox x:Name="newsletterRichText" AcceptsReturn="True" AcceptsTab="True">
+                            <FlowDocument/>
+                        </RichTextBox>
+                    </ScrollViewer>
+                    <ListBox x:Name="newsGoldMemberListTXT" Grid.Column="2" Grid.Row="2" Margin="20,10,20,10">
+                    </ListBox>
+                    <Button x:Name="newsUpdateMembersButton" Grid.Column="2" Grid.Row="3" Width="140" Height="40" Content="Update" HorizontalAlignment="Left" Margin="20,20,20,20"/>
+                    <Button x:Name="newsBackButton" Grid.Column="2" Grid.Row="3" Width="140" Height="40" Content="Exit" HorizontalAlignment="Right" Margin="20,20,20,20" Click="newsBackButton_Click"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

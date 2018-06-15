@@ -1,0 +1,49 @@
+﻿<Window x:Class="TheatreSystem08220.Windows.Schedule"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheatreSystem08220.Windows"
+        mc:Ignorable="d"
+        Title="Schedule" Height="766" Width="1366" Name="scheduleWindow">
+    <Grid>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width=".25*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width=".25*"/>
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Left" Height="735" VerticalAlignment="Top" Width="388">
+            <Grid.RowDefinitions >
+                <RowDefinition Height=".5*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="label" HorizontalAlignment="Center"  VerticalAlignment="Center" Content="Upcoming Performances:" FontSize="24" FontFamily="Segoe UI Black" Grid.Column="0"/>
+            <WrapPanel HorizontalAlignment="Left" Height="654"  VerticalAlignment="Top" Width="388" Grid.RowSpan="2">
+                <WrapPanel.Resources>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Margin" Value="50,50" />
+                        <Setter Property="Padding" Value="50,50" />
+                    </Style>
+                </WrapPanel.Resources>
+            </WrapPanel>
+        </Grid>
+        <WrapPanel HorizontalAlignment="Left" Height="715" Margin="0,10,0,0" VerticalAlignment="Top" Width="895" Grid.Column="2">
+            <WrapPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="100,50" />
+                    <Setter Property="Padding" Value="50,50" />
+                </Style>
+            </WrapPanel.Resources>
+            <Calendar
+                
+                />
+            <ScrollViewer Height="114" Width="744">
+                <StackPanel x:Name="sp"/>
+            </ScrollViewer>
+
+
+        </WrapPanel>
+    </Grid>
+</Window>
+    

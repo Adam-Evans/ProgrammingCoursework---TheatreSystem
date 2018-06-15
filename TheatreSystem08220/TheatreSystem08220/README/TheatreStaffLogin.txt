@@ -1,0 +1,6 @@
+Username	Password	level
+Admin		admin		1
+Manager		man		2
+Booking 	book		3
+Newsletter	news		4
+Rep		reppin		5
